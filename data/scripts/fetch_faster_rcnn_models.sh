@@ -3,11 +3,16 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
 cd $DIR
 
+git clone https://github.com/chentinghao/download_google_drive.git
+cd download_google_drive
+
 NET=res101
 FILE=voc_0712_80k-110k.tgz
+ID=0B1_fAEgxdnvJVjFjTFl5cFd5cEk
 # replace it with gs11655.sp.cs.cmu.edu if ladoga.graphics.cs.cmu.edu does not work
-URL=http://ladoga.graphics.cs.cmu.edu/xinleic/tf-faster-rcnn/$NET/$FILE
+#URL=http://gs11655.sp.cs.cmu.edu/xinleic/tf-faster-rcnn/$NET/$FILE
 CHECKSUM=cb32e9df553153d311cc5095b2f8c340
+
 
 if [ -f $FILE ]; then
   echo "File already exists. Checking md5..."
@@ -27,7 +32,8 @@ fi
 
 echo "Downloading Resnet 101 Faster R-CNN models Pret-trained on VOC 07+12 (340M)..."
 
-wget $URL -O $FILE
+#wget $URL -O $FILE
+python download_gdrive.py $ID $FILE
 
 echo "Unzipping..."
 
